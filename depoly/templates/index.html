@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Provider Prediction</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Inpatient Fraud</h1>
+    {% if inpatient|length < 1 %}
+    <h4 style="text-align: center">There are no inpatient claims for given provider.</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Provider</th>
+            <th>Fraud</th>
+        </tr>
+        {% for i in inpatient %}
+            <tr>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[1] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <h1 style="text-align: center">Outpatient Fraud</h1>
+    {% if outpatient|length < 1 %}
+    <h4 style="text-align: center">There are no outpatient claims for given provider.</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Provider</th>
+            <th>Fraud</th>
+        </tr>
+        {% for i in outpatient %}
+            <tr>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[1] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <div>
+        <a href="/healthcare">Go Back</a>
+    </div>
+</div>
+{% endblock %}
